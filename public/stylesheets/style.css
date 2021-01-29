@@ -1,3 +1,40 @@
+/* CSS HEX */
+
+:root {
+  --majorelle-blue: #574ae2ff;
+  --royal-blue-dark: #222a68ff;
+  --rebecca-purple: #654597ff;
+  --lavender-floral: #ab81cdff;
+  --mauve: #e2adf2ff;
+}
+
+body {
+  background-color: #654597ff;
+}
+
+#billForm {
+  width: 50%;
+  color: white;
+}
+
+input[type=text] {
+  background-color: #3CBC8D;
+  color: white;
+}
+
+#billDue {
+  width: 10%;
+  background-color: #3CBC8D;
+  color: white;
+}
+
+form.signup,
+form.login {
+  margin-top: 50px;
+}
+
+/* calendar */
+
 form.signup,
 form.login {
   margin-top: 50px;
