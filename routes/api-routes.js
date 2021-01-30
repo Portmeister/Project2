@@ -47,38 +47,88 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/api/authors", function(req, res) {
-    // 1. Add a join to include all of each Author's Posts
-    db.Author.findAll({}).then(function(dbAuthor) {
-      res.json(dbAuthor);
+   // GET route for getting all of the Bills
+   app.get("/api/bills", function(req, res) {
+    // Add sequelize code to find all bills, and return them to the user with res.json
+    db.Bill.findAll({}).then(function(dbBills) {
+      // We have access to the todos as an argument inside of the callback function
+      res.json(dbBills);
     });
   });
 
-  app.get("/api/authors/:id", function(req, res) {
-    // 2; Add a join to include all of the Author's Posts here
-    db.Author.findOne({
+   // Get route for returning Bills of a specific category
+   app.get("/api/bills/category/:category", function(req, res) {
+    // Add sequelize code to find all posts where the category is equal to req.params.category,
+    // return the result to the user with res.json
+    db.Bill.findAll({
+      where: {
+        category: req.params.category
+      }
+    }).then(function(dbBills) {
+      // We have access to the todos as an argument inside of the callback function
+      res.json(dbBills);
+    });
+  });
+
+  // Get route for retrieving a single post
+  app.get("/api/bills/:id", function(req, res) {
+    // Add sequelize code to find a single post where the id is equal to req.params.id,
+    // return the result to the user with res.json
+    db.Bill.findAll({
       where: {
         id: req.params.id
       }
-    }).then(function(dbAuthor) {
-      res.json(dbAuthor);
+    }).then(function(dbBills) {
+      // We have access to the todos as an argument inside of the callback function
+      res.json(dbBills);
     });
   });
 
-  app.post("/api/authors", function(req, res) {
-    db.Author.create(req.body).then(function(dbAuthor) {
-      res.json(dbAuthor);
+  // POST route for saving a new post
+  app.post("/api/bills", function(req, res) {
+    // Add sequelize code for creating a post using req.body,
+    // then return the result using res.json
+    db.Bill.create({
+      category: req.body.category,
+      amount: req.body.amount,
+      date: req.body.date
+    }).then(function(dbBills) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(dbBills);
     });
   });
 
-  app.delete("/api/authors/:id", function(req, res) {
-    db.Author.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbAuthor) {
-      res.json(dbAuthor);
+    // DELETE route for deleting posts
+    app.delete("/api/bills/:id", function(req, res) {
+      // Add sequelize code to delete a post where the id is equal to req.params.id, 
+      // then return the result to the user using res.json
+      db.Bill.destroy({
+        where: {
+          id: req.params.id
+        }
+      }).then(function(dbBills) {
+        // We have access to the todos as an argument inside of the callback function
+        res.json(dbBills);
+      });
     });
-  });
 
+    // PUT route for updating posts
+    app.put("/api/bills", function(req, res) {
+      // Add code here to update a post using the values in req.body, where the id is equal to
+      // req.body.id and return the result to the user using res.json
+      db.Bill.update({
+        category: req.body.category,
+        amount: req.body.amount,
+        date: req.body.date
+        }, 
+        {
+          where: {
+            id: req.body.id
+          }
+        }
+      ).then(function(dbBills) {
+        // We have access to the todos as an argument inside of the callback function
+        res.json(dbBills);
+      });
+    });
 };
