@@ -1,14 +1,6 @@
-@font-face {
-    font-family: 'Gilroy';
-    src: url('font/Gilroy-Regular.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Gilroy Bold';
-    src: url('font/Gilroy-Bold.woff') format('woff');
-    font-weight: bold;
-    font-style: normal;
+@viewport{
+    zoom: 1.0;
+    width: extend-to-zoom;
 }
 
 body{
