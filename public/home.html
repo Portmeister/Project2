@@ -18,210 +18,44 @@
 <body>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="/logout">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/logout">
               Logout
             </a>
-          </div>
-        </div>
-      </nav>
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-              <h2>Welcome <span class="member-name"></span></h2>
             </div>
-          </div>
         </div>
-    <!-- Active list of bills due -->
-    <div class="list-group" id="billDue">
-        <button type="button" class="list-group-item list-group-item-action list-group-item-success" aria-current="true">
-            Cras justo odio
-        </button>
-        <button type="button" class="list-group-item list-group-item-action list-group-item-success">Dapibus ac facilisis in</button>
-        <button type="button" class="list-group-item list-group-item-action list-group-item-success">Morbi leo risus</button>
-        <button type="button" class="list-group-item list-group-item-action list-group-item-success">Porta ac consectetur ac</button>
-
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <h2>Welcome <span class="member-name"></span></h2>
+            </div>
+        </div>
     </div>
-    <!-- Calender goes here -->
-    <!-- <style>
-        * {
-            box-sizing: border-box;
-        }
-        
-        ul {
-            list-style-type: none;
-        }
-        
-        body {
-            font-family: Calibri light, Arial, Helvetica
-        }
-        
-        .month {
-            padding: 50px 75px;
-            width: 100%;
-            background: #C71585;
-            text-align: center;
-        }
-        
-        .month ul {
-            margin: 0;
-            padding: 0;
-        }
-        
-        .month ul li {
-            color: white;
-            font-size: 40px;
-            text-transform: uppercase;
-            letter-spacing: 6px;
-        }
-        
-        .month .prev {
-            float: left;
-            padding-top: 20px;
-        }
-        
-        .month .next {
-            float: right;
-            padding-top: 20px;
-        }
-        
-        .weekdays {
-            margin: 0;
-            padding: 10px 0;
-            background-color: #778899;
-        }
-        
-        .weekdays li {
-            display: inline-block;
-            width: 13.8%;
-            color: grey light;
-            text-align: center;
-        }
-        
-        .days {
-            padding: 15px 0;
-            background: #D3D3D3;
-            margin: 0;
-        }
-        
-        .days li {
-            list-style-type: none;
-            display: inline-block;
-            width: 13.8%;
-            text-align: center;
-            margin-bottom: 5px;
-            font-size: 12px;
-            color: #778899;
-        }
-        
-        .days li .active {
-            padding: 7px;
-            background: #C71585;
-            color: white;
-        }
-        
-        @media screen and (max-width:720px) {
-            .weekdays li,
-            .days li {
-                width: 15.1%;
-            }
-        }
-        
-        @media screen and (max-width: 440px) {
-            .weekdays li,
-            .days li {
-                width: 15.5%;
-            }
-            .days li .active {
-                padding: 4px;
-            }
-        }
-        
-        @media screen and (max-width: 390px) {
-            .weekdays li,
-            .days li {
-                width: 12.2%;
-            }
-        }
-        
-        .calendar {
-            width: 90%;
-        }
-    </style>
-    <div class="calendar">
-        <div class="month">
-            <ul>
-                <li class="prev">❮</li>
-                <li class="next">❯</li>
-                <li>March<br>
-                    <span style="font-size:28px">2020</span>
-                </li>
-            </ul>
+    <!-- Active list of bills due -->
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Electric</h5>
+            <h6 class="card-subtitle mb-2 text-muted">$100</h6>
+            <p class="card-text">01/30/2021</p>
         </div>
-        <ul class="weekdays">
-            <li>Mo</li>
-            <li>Tu</li>
-            <li>We</li>
-            <li>Th</li>
-            <li>Fr</li>
-            <li>Sa</li>
-            <li>Su</li>
-        </ul>
-        <ul class="days">
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-            <li>6</li>
-            <li>7</li>
-            <li>8</li>
-            <li>9</li>
-            <li>10</li>
-            <li>11</li>
-            <li>12</li>
-            <li>13</li>
-            <li>14</li>
-            <li>15</li>
-            <li>16</li>
-            <li>17</li>
-            <li>18</li>
-            <li>19</li>
-            <li>20</li>
-            <li>21</li>
-            <li>22</li>
-            <li>23</li>
-            <li><span class="active">24</span></li>
-            <li>25</li>
-            <li>26</li>
-            <li>27</li>
-            <li>28</li>
-            <li>29</li>
-            <li>30</li>
-            <li>31</li>
-        </ul>
-    </div> -->
-    <!-- Graph goes here -->
-
-
+    </div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Rent</h5>
+            <h6 class="card-subtitle mb-2 text-muted">$1000</h6>
+            <p class="card-text">01/30/2021</p>
+        </div>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Water</h5>
+            <h6 class="card-subtitle mb-2 text-muted">$50</h6>
+            <p class="card-text">01/30/2021</p>
+        </div>
+    </div>
     <!-- js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/members.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
 
-    <script>
-        $(document).ready(function() {
-            var date_input = $('input[name="date"]'); //our date input has the name "date"
-            var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
-            date_input.datepicker({
-                format: 'mm/dd/yyyy',
-                container: container,
-                todayHighlight: true,
-                autoclose: true,
-            })
-        });
-    </script>
     <script src="REPLACE WITH JS FILE"></script>
 </body>
 
