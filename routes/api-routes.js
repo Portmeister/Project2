@@ -50,7 +50,11 @@ module.exports = function(app) {
    // GET route for getting all of the Bills
    app.get("/api/bills", function(req, res) {
     // Add sequelize code to find all bills, and return them to the user with res.json
-    db.Bill.findAll({}).then(function(dbBills) {
+    db.Bill.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then(function(dbBills) {
       // We have access to the todos as an argument inside of the callback function
       res.json(dbBills);
     });
@@ -91,7 +95,8 @@ module.exports = function(app) {
     db.Bill.create({
       category: req.body.category,
       amount: req.body.amount,
-      date: req.body.date
+      date: new Date().setDate(new Date().getDate() + 7), // set date 7 days ahead
+      UserId: req.user.id,
     }).then(function(dbBills) {
       // We have access to the new todo as an argument inside of the callback function
       res.json(dbBills);

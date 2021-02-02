@@ -29,8 +29,10 @@ let balance = 0, income = 0, outcome = 0;
 const DELETE = "delete", EDIT = "edit";
 
 // LOOK IF THERE IS SAVED DATA IN LOCALSTORAGE
-ENTRY_LIST = JSON.parse(localStorage.getItem("entry_list")) || [];
+ENTRY_LIST = [] ;
 updateUI();
+
+
 
 // EVENT LISTENERS
 expenseBtn.addEventListener("click", function(){
@@ -58,15 +60,25 @@ addExpense.addEventListener("click", function(){
 
     // SAVE THE ENTRY TO ENTRY_LIST
     let expense = {
-        type : "expense",
-        title : expenseTitle.value,
+        category : expenseTitle.value,
         amount : parseInt(expenseAmount.value)
     }
-    ENTRY_LIST.push(expense);
 
-    updateUI();
-    clearInput( [expenseTitle, expenseAmount] )
+    var settings = {
+        "url": "/api/bills",
+        "method": "POST",
+        "data": expense
+      };
+      
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+        //ENTRY_LIST.push(expense);
+
+        updateUI();
+        clearInput( [expenseTitle, expenseAmount] )
 })
+      });
+
 
 addIncome.addEventListener("click", function(){
     // IF ONE OF THE INPUTS IS EMPTY => EXIT
@@ -74,8 +86,7 @@ addIncome.addEventListener("click", function(){
 
     // SAVE THE ENTRY TO ENTRY_LIST
     let income = {
-        type : "income",
-        title : incomeTitle.value,
+        category : incomeTitle.value,
         amount : parseInt(incomeAmount.value)
     }
     ENTRY_LIST.push(income);
@@ -112,10 +123,10 @@ function editEntry(entry){
     console.log(entry)
     let ENTRY = ENTRY_LIST[entry.id];
 
-    if(ENTRY.type == "income"){
+    if(ENTRY.category == "income"){
         incomeAmount.value = ENTRY.amount;
         incomeTitle.value = ENTRY.title;
-    }else if(ENTRY.type == "expense"){
+    }else if(ENTRY.category == "expense"){
         expenseAmount.value = ENTRY.amount;
         expenseTitle.value = ENTRY.title;
     }
@@ -124,38 +135,50 @@ function editEntry(entry){
 }
 
 function updateUI(){
-    income = calculateTotal("income", ENTRY_LIST);
-    outcome = calculateTotal("expense", ENTRY_LIST);
-    balance = Math.abs(calculateBalance(income, outcome));
+    
+    var settings = {
+        "url": "/api/bills",
+        "method": "GET",
+      };
+      
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+        ENTRY_LIST = response
+        income = calculateTotal("income", ENTRY_LIST);
+        outcome = calculateTotal("expense", ENTRY_LIST);
+        balance = Math.abs(calculateBalance(income, outcome));
+    
+        // DETERMINE SIGN OF BALANCE
+        let sign = (income >= outcome) ? "$" : "-$";
+    
+        // UPDATE UI
+        balanceEl.innerHTML = `<small>${sign}</small>${balance}`;
+        outcomeTotalEl.innerHTML = `<small>$</small>${outcome}`;
+        incomeTotalEl.innerHTML = `<small>$</small>${income}`;
+    
+        clearElement( [expenseList, incomeList, allList] );
+    
+        ENTRY_LIST.forEach( (entry, index) => {
+            if( entry.category == "expense" ){
+                showEntry(expenseList, entry.category, entry.amount, index)
+            }else if( entry.category == "income" ){
+                showEntry(incomeList, entry.category, entry.amount, index)
+            }
+            showEntry(allList, entry.category, entry.amount, index)
+        });
+    
+        updateChart(income, outcome);
+    
+      });
 
-    // DETERMINE SIGN OF BALANCE
-    let sign = (income >= outcome) ? "$" : "-$";
-
-    // UPDATE UI
-    balanceEl.innerHTML = `<small>${sign}</small>${balance}`;
-    outcomeTotalEl.innerHTML = `<small>$</small>${outcome}`;
-    incomeTotalEl.innerHTML = `<small>$</small>${income}`;
-
-    clearElement( [expenseList, incomeList, allList] );
-
-    ENTRY_LIST.forEach( (entry, index) => {
-        if( entry.type == "expense" ){
-            showEntry(expenseList, entry.type, entry.title, entry.amount, index)
-        }else if( entry.type == "income" ){
-            showEntry(incomeList, entry.type, entry.title, entry.amount, index)
-        }
-        showEntry(allList, entry.type, entry.title, entry.amount, index)
-    });
-
-    updateChart(income, outcome);
-
-    localStorage.setItem("entry_list", JSON.stringify(ENTRY_LIST));
+   
+    //localStorage.setItem("entry_list", JSON.stringify(ENTRY_LIST));
 }
 
-function showEntry(list, type, title, amount, id){
+function showEntry(list, category, amount, id){
 
-    const entry = ` <li id = "${id}" class="${type}">
-                        <div class="entry">${title}: $${amount}</div>
+    const entry = ` <li id = "${id}" class="${category}">
+                        <div class="entry">${category}: $${amount}</div>
                         <div id="edit"></div>
                         <div id="delete"></div>
                     </li>`;
@@ -171,11 +194,11 @@ function clearElement(elements){
     })
 }
 
-function calculateTotal(type, list){
+function calculateTotal(category, list){
     let sum = 0;
 
     list.forEach( entry => {
-        if( entry.type == type ){
+        if( entry.category == category ){
             sum += entry.amount;
         }
     })
