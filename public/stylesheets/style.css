@@ -1,46 +1,296 @@
-/* CSS HEX */
-
-:root {
-  --majorelle-blue: #574ae2ff;
-  --royal-blue-dark: #222a68ff;
-  --rebecca-purple: #654597ff;
-  --lavender-floral: #ab81cdff;
-  --mauve: #e2adf2ff;
+@import 'https://fonts.googleapis.com/css?family=Playfair+Display:400,700i,900i';
+* {
+    box-sizing: border-box;
 }
 
 body {
-  background-color: #654597ff;
+    font-family: "Playfair Display", serif;
+    color: #acaabe;
+    text-rendering: optimizeLegibility;
+    font-smooth: always;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #3b3d54;
+    font-size: 14px;
+    overflow: hidden;
 }
 
-#billForm {
-  width: 50%;
-  color: white;
+.wrap {
+    perspective-origin: 50% 50%;
 }
 
-input[type=text] {
-  background-color: #3CBC8D;
-  color: white;
+.page {
+    margin: 3%;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+    border-radius: 3px;
+    text-align: center;
+    font-size: 1.4vw;
 }
 
-#billDue {
-  width: 10%;
-  background-color: #3CBC8D;
-  color: white;
+.page h2 {
+    font-weight: bold;
+    font-size: 6.5vw;
+    font-weight: 900;
+    font-style: italic;
+    color: #dad8ec;
 }
 
-form.signup,
-form.login {
-  margin-top: 50px;
+.svg {
+    stroke: #7ceaa4;
+    position: absolute;
+    bottom: -100vh;
+    transform-style: preserve-3d;
 }
 
-/* calendar */
-
-form.signup,
-form.login {
-  margin-top: 50px;
+.svg:nth-child(1) {
+    left: 51%;
+    -webkit-animation: raise1 12s linear infinite;
+    animation: raise1 12s linear infinite;
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+    transform: scale(-0.3) rotate(205deg);
+    z-index: -6;
+    filter: blur(-5px);
 }
 
-iframe {
-  display:block;
-  width:100%;
+@-webkit-keyframes raise1 {
+    to {
+        bottom: 150vh;
+        transform: scale(-0.3) rotate(115deg);
+    }
+}
+
+@keyframes raise1 {
+    to {
+        bottom: 150vh;
+        transform: scale(-0.3) rotate(115deg);
+    }
+}
+
+.svg:nth-child(2) {
+    left: 55%;
+    -webkit-animation: raise2 7s linear infinite;
+    animation: raise2 7s linear infinite;
+    -webkit-animation-delay: -2s;
+    animation-delay: -2s;
+    transform: scale(0) rotate(233deg);
+    z-index: -5;
+    filter: blur(-4px);
+}
+
+@-webkit-keyframes raise2 {
+    to {
+        bottom: 150vh;
+        transform: scale(0) rotate(78deg);
+    }
+}
+
+@keyframes raise2 {
+    to {
+        bottom: 150vh;
+        transform: scale(0) rotate(78deg);
+    }
+}
+
+.svg:nth-child(3) {
+    left: 34%;
+    -webkit-animation: raise3 13s linear infinite;
+    animation: raise3 13s linear infinite;
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s;
+    transform: scale(0.3) rotate(167deg);
+    z-index: -4;
+    filter: blur(-3px);
+}
+
+@-webkit-keyframes raise3 {
+    to {
+        bottom: 150vh;
+        transform: scale(0.3) rotate(118deg);
+    }
+}
+
+@keyframes raise3 {
+    to {
+        bottom: 150vh;
+        transform: scale(0.3) rotate(118deg);
+    }
+}
+
+.svg:nth-child(4) {
+    left: 16%;
+    -webkit-animation: raise4 13s linear infinite;
+    animation: raise4 13s linear infinite;
+    -webkit-animation-delay: -4s;
+    animation-delay: -4s;
+    transform: scale(0.6) rotate(154deg);
+    z-index: -3;
+    filter: blur(-2px);
+}
+
+@-webkit-keyframes raise4 {
+    to {
+        bottom: 150vh;
+        transform: scale(0.6) rotate(310deg);
+    }
+}
+
+@keyframes raise4 {
+    to {
+        bottom: 150vh;
+        transform: scale(0.6) rotate(310deg);
+    }
+}
+
+.svg:nth-child(5) {
+    left: 43%;
+    -webkit-animation: raise5 20s linear infinite;
+    animation: raise5 20s linear infinite;
+    -webkit-animation-delay: -1s;
+    animation-delay: -1s;
+    transform: scale(0.9) rotate(208deg);
+    z-index: -2;
+    filter: blur(-1px);
+}
+
+@-webkit-keyframes raise5 {
+    to {
+        bottom: 150vh;
+        transform: scale(0.9) rotate(244deg);
+    }
+}
+
+@keyframes raise5 {
+    to {
+        bottom: 150vh;
+        transform: scale(0.9) rotate(244deg);
+    }
+}
+
+.svg:nth-child(6) {
+    left: 76%;
+    -webkit-animation: raise6 11s linear infinite;
+    animation: raise6 11s linear infinite;
+    -webkit-animation-delay: -4s;
+    animation-delay: -4s;
+    transform: scale(1.2) rotate(352deg);
+    z-index: -1;
+    filter: blur(0px);
+}
+
+@-webkit-keyframes raise6 {
+    to {
+        bottom: 150vh;
+        transform: scale(1.2) rotate(227deg);
+    }
+}
+
+@keyframes raise6 {
+    to {
+        bottom: 150vh;
+        transform: scale(1.2) rotate(227deg);
+    }
+}
+
+.svg:nth-child(7) {
+    left: 81%;
+    -webkit-animation: raise7 18s linear infinite;
+    animation: raise7 18s linear infinite;
+    -webkit-animation-delay: -3s;
+    animation-delay: -3s;
+    transform: scale(1.5) rotate(221deg);
+    z-index: 0;
+    filter: blur(1px);
+}
+
+@-webkit-keyframes raise7 {
+    to {
+        bottom: 150vh;
+        transform: scale(1.5) rotate(95deg);
+    }
+}
+
+@keyframes raise7 {
+    to {
+        bottom: 150vh;
+        transform: scale(1.5) rotate(95deg);
+    }
+}
+
+.svg:nth-child(8) {
+    left: -7%;
+    -webkit-animation: raise8 18s linear infinite;
+    animation: raise8 18s linear infinite;
+    -webkit-animation-delay: -2s;
+    animation-delay: -2s;
+    transform: scale(1.8) rotate(195deg);
+    z-index: 1;
+    filter: blur(2px);
+}
+
+@-webkit-keyframes raise8 {
+    to {
+        bottom: 150vh;
+        transform: scale(1.8) rotate(238deg);
+    }
+}
+
+@keyframes raise8 {
+    to {
+        bottom: 150vh;
+        transform: scale(1.8) rotate(238deg);
+    }
+}
+
+.svg:nth-child(9) {
+    left: 91%;
+    -webkit-animation: raise9 10s linear infinite;
+    animation: raise9 10s linear infinite;
+    -webkit-animation-delay: -4s;
+    animation-delay: -4s;
+    transform: scale(2.1) rotate(342deg);
+    z-index: 2;
+    filter: blur(3px);
+}
+
+@-webkit-keyframes raise9 {
+    to {
+        bottom: 150vh;
+        transform: scale(2.1) rotate(284deg);
+    }
+}
+
+@keyframes raise9 {
+    to {
+        bottom: 150vh;
+        transform: scale(2.1) rotate(284deg);
+    }
+}
+
+.svg:nth-child(10) {
+    left: 65%;
+    -webkit-animation: raise10 19s linear infinite;
+    animation: raise10 19s linear infinite;
+    -webkit-animation-delay: -4s;
+    animation-delay: -4s;
+    transform: scale(2.4) rotate(203deg);
+    z-index: 3;
+    filter: blur(4px);
+}
+
+@-webkit-keyframes raise10 {
+    to {
+        bottom: 150vh;
+        transform: scale(2.4) rotate(272deg);
+    }
+}
+
+@keyframes raise10 {
+    to {
+        bottom: 150vh;
+        transform: scale(2.4) rotate(272deg);
+    }
 }
