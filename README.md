@@ -2,7 +2,7 @@
 
 ## Live Heroku Web Page: https://project222222.herokuapp.com/ 
 
-## Application Live Page:    
+## Application Live Page: ![Demo](https://github.com/Portmeister/Project2/blob/main/Budget_App.gif)    
 
 
 ## App Description & Methodology:
